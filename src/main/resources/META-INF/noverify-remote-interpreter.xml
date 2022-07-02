@@ -1,0 +1,5 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="com.vk.noverify">
+        <noverifyConfigurationProvider implementation="com.vk.noverify.NoVerifyRemoteConfigurationProvider"/>
+    </extensions>
+</idea-plugin>

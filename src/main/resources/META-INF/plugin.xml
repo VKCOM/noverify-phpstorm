@@ -1,0 +1,59 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+  <id>com.vk.noverify</id>
+  <name>NoVerify Support</name>
+  <version>1.0.0</version>
+  <vendor email="danil42worker@gmail.com" url="https://vk.com/danil42russia">Danil Ovchinnikov</vendor>
+  <description><![CDATA[
+<p>Plugin provides NoVerify static analysis tool support</p>
+<br>
+<p>This plugin adds viewing reports from <a href="https://github.com/VKCOM/noverify">NoVerify</a></p>
+<br>
+<p>To configure, open <b>Settings/Preferences</b> | <b>PHP</b> | <b>Quality Tools</b> | <b>NoVerify</b> | <b>Configuration</b></p>
+<br>
+<p><b>Links</b></p>
+<p><a href="https://github.com/VKCOM/noverify-phpstorm">Plugin Sources</a></p>
+<p><a href="https://github.com/VKCOM/noverify">NoVerify Sources</a></p>
+]]></description>
+  <change-notes><![CDATA[
+<p>First stable version</p>
+]]></change-notes>
+
+  <depends>com.intellij.modules.ultimate</depends>
+  <depends>com.jetbrains.php</depends>
+  <depends optional="true" config-file="noverify-remote-interpreter.xml">
+    org.jetbrains.plugins.phpstorm-remote-interpreter
+  </depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationService
+      serviceImplementation="com.vk.noverify.NoVerifyConfigurationManager$NoVerifyAppConfigurationManager"/>
+    <projectService serviceImplementation="com.vk.noverify.NoVerifyBlackList"/>
+    <projectService serviceImplementation="com.vk.noverify.NoVerifyProjectConfiguration"/>
+    <projectService serviceImplementation="com.vk.noverify.NoVerifyConfigurationManager"/>
+    <projectService
+      serviceImplementation="com.vk.noverify.NoVerifyConfigurationManager$NoVerifyProjectConfigurationManager"/>
+
+    <globalInspection language="PHP" shortName="NoVerifyGlobal"
+                      groupPath="PHP"
+                      groupName="Quality tools"
+                      enabledByDefault="false"
+                      level="WEAK WARNING"
+                      implementationClass="com.vk.noverify.NoVerifyGlobalInspection"
+                      displayName="NoVerify validation"/>
+
+    <externalAnnotator language="PHP" implementationClass="com.vk.noverify.NoVerifyAnnotatorProxy"/>
+  </extensions>
+
+  <extensions defaultExtensionNs="com.jetbrains.php">
+    <tools.projectConfigurableForm instance="com.vk.noverify.NoVerifyConfigurable"/>
+    <tools.quality.type implementation="com.vk.noverify.NoVerifyQualityToolType"/>
+    <composerConfigClient implementation="com.vk.noverify.NoVerifyComposerConfig"/>
+    <openSettingsProvider implementation="com.vk.noverify.NoVerifyOpenSettingsProvider"/>
+  </extensions>
+
+  <extensionPoints>
+    <extensionPoint interface="com.vk.noverify.NoVerifyConfigurationProvider"
+                    name="noverifyConfigurationProvider"/>
+  </extensionPoints>
+</idea-plugin>
