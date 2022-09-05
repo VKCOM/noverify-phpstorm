@@ -2,7 +2,6 @@
 <idea-plugin>
   <id>com.vk.noverify</id>
   <name>NoVerify Support</name>
-  <version>1.0.0</version>
   <vendor email="danil42worker@gmail.com" url="https://vk.com/danil42russia">Danil Ovchinnikov</vendor>
   <description><![CDATA[
 <p>Plugin provides NoVerify static analysis tool support</p>
