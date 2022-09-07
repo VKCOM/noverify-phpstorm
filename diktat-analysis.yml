@@ -171,7 +171,7 @@
 - name: FILE_WILDCARD_IMPORTS
   enabled: true
   configuration:
-    allowedWildcards: "com.jetbrains.php.tools.quality.*" # Allowed wildcards for imports (e.g. "import org.cqfn.diktat.*, import org.jetbrains.kotlin.*")
+    allowedWildcards: "com.jetbrains.php.tools.quality.*, com.intellij.ui.dsl.builder.*" # Allowed wildcards for imports (e.g. "import org.cqfn.diktat.*, import org.jetbrains.kotlin.*")
     useRecommendedImportsOrder: true
 # Checks unused imports
 - name: UNUSED_IMPORT

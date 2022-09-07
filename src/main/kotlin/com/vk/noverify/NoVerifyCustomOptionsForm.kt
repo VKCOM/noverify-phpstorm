@@ -6,16 +6,9 @@ import com.intellij.openapi.ui.DialogPanel
 import com.intellij.openapi.util.Disposer
 import com.intellij.openapi.util.Pair
 import com.intellij.ui.LanguageTextField
-import com.intellij.ui.dsl.builder.BottomGap
-import com.intellij.ui.dsl.builder.Cell
-import com.intellij.ui.dsl.builder.bindSelected
-import com.intellij.ui.dsl.builder.bindIntValue
-import com.intellij.ui.dsl.builder.bindText
-import com.intellij.ui.dsl.builder.panel
-import com.intellij.ui.dsl.builder.MutableProperty
-import com.intellij.ui.dsl.builder.toMutableProperty
+import com.intellij.ui.RelativeFont
+import com.intellij.ui.dsl.builder.*
 import com.intellij.ui.dsl.gridLayout.HorizontalAlign
-import com.intellij.util.ui.JBUI
 import com.jetbrains.php.tools.quality.QualityToolCustomSettings
 import org.intellij.lang.regexp.RegExpLanguage
 import java.awt.Font
@@ -24,7 +17,7 @@ import kotlin.reflect.KMutableProperty0
 
 class NoVerifyCustomOptionsForm(
     private val project: Project,
-    private val configuration: NoVerifyConfiguration
+    private val configuration: NoVerifyConfiguration,
 ) : QualityToolCustomSettings() {
 
     data class Model(
@@ -127,7 +120,7 @@ class NoVerifyCustomOptionsForm(
     override fun validate() = Pair.create(false, "")
 
     private fun <T : JComponent> Cell<T>.monospace(): Cell<T> {
-        component.font = JBUI.Fonts.create(Font.MONOSPACED, 14)
+        MONOSPACED_FONT.install(component)
         return this
     }
 
@@ -137,5 +130,9 @@ class NoVerifyCustomOptionsForm(
 
     private fun <T : LanguageTextField> Cell<T>.bindText(prop: MutableProperty<String>): Cell<T> {
         return bind(LanguageTextField::getText, LanguageTextField::setText, prop)
+    }
+
+    companion object {
+        private val MONOSPACED_FONT = RelativeFont.NORMAL.family(Font.MONOSPACED)
     }
 }
