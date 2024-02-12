@@ -18,7 +18,7 @@ jobs:
 
       # Validate wrapper
       - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1.0.4
+        uses: gradle/wrapper-validation-action@v1.0.5
 
       # Setup Java 11 environment for the next steps
       - name: Setup Java
@@ -35,13 +35,15 @@ jobs:
           PROPERTIES="$(./gradlew properties --console=plain -q)"
           VERSION="$(echo "$PROPERTIES" | grep "^version:" | cut -f2- -d ' ')"
           NAME="$(echo "$PROPERTIES" | grep "^pluginName:" | cut -f2- -d ' ')"
+
           echo "::set-output name=version::$VERSION"
           echo "::set-output name=name::$NAME"
           echo "::set-output name=pluginVerifierHomeDir::~/.pluginVerifier"
           ./gradlew listProductsReleases # prepare list of IDEs for Plugin Verifier
+
       # Run tests
       - name: Run Tests
-        run: ./gradlew test
+        run: ./gradlew check
 
       # Cache Plugin Verifier IDEs
       - name: Setup Plugin Verifier IDEs Cache

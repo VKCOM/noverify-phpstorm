@@ -32,7 +32,7 @@ class NoVerifyGlobalInspection : QualityToolValidationGlobalInspection(), Extern
         cachePath: String,
         customParameters: String,
     ): List<String> {
-        val options: MutableList<String> = ArrayList()
+        val options = mutableListOf<String>()
         options.add("check")
 
         options.add("--output=stdout")

@@ -14,9 +14,6 @@
 <p><a href="https://github.com/VKCOM/noverify-phpstorm">Plugin Sources</a></p>
 <p><a href="https://github.com/VKCOM/noverify">NoVerify Sources</a></p>
 ]]></description>
-  <change-notes><![CDATA[
-<p>First stable version</p>
-]]></change-notes>
 
   <depends>com.intellij.modules.ultimate</depends>
   <depends>com.jetbrains.php</depends>
