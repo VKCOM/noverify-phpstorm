@@ -9,6 +9,7 @@ import com.vk.noverify.NoVerifyConfigurationBaseManager.Companion.NOVERIFY
 class NoVerifyConfigurableForm(project: Project, configuration: NoVerifyConfiguration) :
     QualityToolConfigurableForm<NoVerifyConfiguration>(project, configuration, NOVERIFY, "Noverify") {
     override fun getQualityToolType(): QualityToolType<QualityToolConfiguration> {
+        @Suppress("UNCHECKED_CAST")
         return NoVerifyQualityToolType.INSTANCE as QualityToolType<QualityToolConfiguration>
     }
 
