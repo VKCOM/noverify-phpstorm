@@ -5,7 +5,6 @@ import com.intellij.openapi.util.SystemInfo
 import com.jetbrains.php.composer.actions.log.ComposerLogMessageBuilder
 import com.jetbrains.php.tools.quality.QualityToolConfigurationManager
 import com.jetbrains.php.tools.quality.QualityToolsComposerConfig
-import org.jetbrains.annotations.NonNls
 import com.vk.noverify.NoVerifyOpenSettingsProvider.Companion.NOVERIFY_OPEN_SETTINGS_PROVIDER
 
 class NoVerifyComposerConfig :
@@ -27,7 +26,7 @@ class NoVerifyComposerConfig :
     }
 
     companion object {
-        private const val PACKAGE: @NonNls String = "vkcom/noverify"
-        private val RELATIVE_PATH: @NonNls String = "bin/noverify${if (SystemInfo.isWindows) ".exe" else ""}"
+        private const val PACKAGE: String = "vkcom/noverify"
+        private val RELATIVE_PATH: String = "bin/noverify${if (SystemInfo.isWindows) ".exe" else ""}"
     }
 }

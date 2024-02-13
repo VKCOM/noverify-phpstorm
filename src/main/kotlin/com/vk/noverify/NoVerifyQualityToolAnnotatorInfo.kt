@@ -12,7 +12,7 @@ class NoVerifyQualityToolAnnotatorInfo(
     profile: InspectionProfile,
     project: Project,
     configuration: QualityToolConfiguration,
-    isOnTheFly: Boolean
+    isOnTheFly: Boolean,
 ) : QualityToolAnnotatorInfo<NoVerifyValidationInspection>(
     psiFile,
     inspection,

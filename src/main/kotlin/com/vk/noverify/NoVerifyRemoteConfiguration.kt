@@ -1,22 +1,19 @@
 package com.vk.noverify
 
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.util.NlsContexts
-import com.intellij.openapi.util.NlsSafe
 import com.intellij.openapi.util.text.StringUtil
 import com.intellij.util.xmlb.annotations.Attribute
 import com.intellij.util.xmlb.annotations.Tag
 import com.jetbrains.php.config.interpreters.PhpInterpretersManagerImpl
 import com.jetbrains.php.config.interpreters.PhpSdkDependentConfiguration
 import com.jetbrains.php.tools.quality.QualityToolConfiguration
-import org.jetbrains.annotations.Nls
 
 @Tag("noverify_by_interpreter")
 class NoVerifyRemoteConfiguration : NoVerifyConfiguration(), PhpSdkDependentConfiguration {
     private var myInterpreterId: String? = null
 
     @Attribute("interpreter_id")
-    override fun getInterpreterId(): @NlsSafe String? {
+    override fun getInterpreterId(): String? {
         return myInterpreterId
     }
 
@@ -24,16 +21,16 @@ class NoVerifyRemoteConfiguration : NoVerifyConfiguration(), PhpSdkDependentConf
         myInterpreterId = interpreterId
     }
 
-    override fun getPresentableName(project: Project?): @NlsContexts.Label String {
+    override fun getPresentableName(project: Project?): String {
         return getDefaultName(PhpInterpretersManagerImpl.getInstance(project).findInterpreterName(interpreterId))
     }
 
-    override fun getId(): @Nls String {
+    override fun getId(): String {
         val interpreterId = interpreterId
         return if (StringUtil.isEmpty(interpreterId)) "Undefined interpreter" else interpreterId!!
     }
 
-    private fun getDefaultName(interpreterName: String?): @Nls String {
+    private fun getDefaultName(interpreterName: String?): String {
         return if (interpreterName?.isEmpty() == true) {
             "Undefined interpreter"
         } else {

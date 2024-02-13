@@ -30,7 +30,7 @@ class NoVerifyQualityToolType : QualityToolType<NoVerifyConfiguration>() {
     }
 
     override fun createConfigurableForm(
-        project: Project, settings: NoVerifyConfiguration
+        project: Project, settings: NoVerifyConfiguration,
     ): QualityToolConfigurableForm<NoVerifyConfiguration> {
         return NoVerifyConfigurableForm(project, settings)
     }

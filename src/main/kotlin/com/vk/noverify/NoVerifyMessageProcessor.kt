@@ -15,7 +15,7 @@ class NoVerifyMessageProcessor(private val info: QualityToolAnnotatorInfo<*>) : 
     }
 
     override fun getMessagePrefix(): @NonNls String {
-        return "noverify"
+        return "Noverify"
     }
 
     override fun parseLine(line: String) {
