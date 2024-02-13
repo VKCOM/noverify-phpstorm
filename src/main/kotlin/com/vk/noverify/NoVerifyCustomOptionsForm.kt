@@ -8,7 +8,6 @@ import com.intellij.openapi.util.Pair
 import com.intellij.ui.LanguageTextField
 import com.intellij.ui.RelativeFont
 import com.intellij.ui.dsl.builder.*
-import com.intellij.ui.dsl.gridLayout.HorizontalAlign
 import com.jetbrains.php.tools.quality.QualityToolCustomSettings
 import org.intellij.lang.regexp.RegExpLanguage
 import java.awt.Font
@@ -41,19 +40,19 @@ class NoVerifyCustomOptionsForm(
         centralPanel = panel {
             row {
                 checkBox("Interpret code as KPHP")
-                    .horizontalAlign(HorizontalAlign.FILL)
+                    .align(AlignX.FILL)
                     .bindSelected(model::asKphp)
             }.bottomGap(BottomGap.SMALL)
             row("Exclude regexp:") {
                 cell(excludeRegexpTextField)
                     .monospace()
-                    .horizontalAlign(HorizontalAlign.FILL)
+                    .align(AlignX.FILL)
                     .bindText(model::excludeRegexp)
             }
             row("Unused var regexp:") {
                 cell(unusedVarRegexpTextField)
                     .monospace()
-                    .horizontalAlign(HorizontalAlign.FILL)
+                    .align(AlignX.FILL)
                     .bindText(model::unusedVarRegexp)
             }
             row("Cores:") {
@@ -66,12 +65,12 @@ class NoVerifyCustomOptionsForm(
                     project,
                     FileChooserDescriptorFactory.createSingleFolderDescriptor()
                 ) { it.path }
-                    .horizontalAlign(HorizontalAlign.FILL)
+                    .align(AlignX.FILL)
                     .bindText(model::cachePath)
             }
             row("Other parameters:") {
                 expandableTextField()
-                    .horizontalAlign(HorizontalAlign.FILL)
+                    .align(AlignX.FILL)
                     .bindText(model::customParameters)
             }
         }
