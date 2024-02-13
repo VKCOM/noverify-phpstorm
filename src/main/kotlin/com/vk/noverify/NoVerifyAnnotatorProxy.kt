@@ -9,7 +9,7 @@ import com.jetbrains.php.tools.quality.*
 
 open class NoVerifyAnnotatorProxy : QualityToolAnnotator<NoVerifyValidationInspection>() {
     override fun getOptions(
-        filePath: String?, inspection: NoVerifyValidationInspection, profile: InspectionProfile?, project: Project
+        filePath: String?, inspection: NoVerifyValidationInspection, profile: InspectionProfile?, project: Project,
     ): List<String> {
         if (filePath == null) {
             return emptyList()
@@ -45,7 +45,7 @@ open class NoVerifyAnnotatorProxy : QualityToolAnnotator<NoVerifyValidationInspe
         inspectionProfile: InspectionProfile,
         project: Project,
         configuration: QualityToolConfiguration,
-        isOnTheFly: Boolean
+        isOnTheFly: Boolean,
     ): QualityToolAnnotatorInfo<NoVerifyValidationInspection> {
         if (!isOnTheFly) {
             LOG.warn("isOnTheFly is False")

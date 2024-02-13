@@ -1,6 +1,5 @@
 package com.vk.noverify
 
-import com.intellij.openapi.util.NlsSafe
 import com.intellij.util.xmlb.XmlSerializer
 import com.jetbrains.php.tools.quality.QualityToolConfigurationBaseManager
 import com.jetbrains.php.tools.quality.QualityToolType
@@ -24,8 +23,8 @@ open class NoVerifyConfigurationBaseManager : QualityToolConfigurationBaseManage
     }
 
     companion object {
-        const val NOVERIFY: @NlsSafe String = "NoVerify"
-        const val NOVERIFY_PATH: @NlsSafe String = "NoVerifyPath"
-        const val NOVERIFY_ROOT_NAME: @NlsSafe String = "NoVerify_settings"
+        const val NOVERIFY: String = "NoVerify"
+        const val NOVERIFY_PATH: String = "NoVerifyPath"
+        const val NOVERIFY_ROOT_NAME: String = "NoVerify_settings"
     }
 }

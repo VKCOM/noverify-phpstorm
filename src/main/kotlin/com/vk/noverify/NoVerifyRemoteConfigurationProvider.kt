@@ -6,7 +6,6 @@ import com.jetbrains.php.config.interpreters.PhpInterpreter
 import com.jetbrains.php.remote.tools.quality.QualityToolByInterpreterConfigurableForm
 import com.jetbrains.php.tools.quality.QualityToolConfigurableForm
 import org.jdom.Element
-import org.jetbrains.annotations.NonNls
 
 class NoVerifyRemoteConfigurationProvider : NoVerifyConfigurationProvider() {
     override fun canLoad(tagName: String): Boolean {
@@ -19,7 +18,7 @@ class NoVerifyRemoteConfigurationProvider : NoVerifyConfigurationProvider() {
 
     override fun createConfigurationForm(
         project: Project,
-        settings: NoVerifyConfiguration
+        settings: NoVerifyConfiguration,
     ): QualityToolConfigurableForm<*>? {
         if (settings !is NoVerifyRemoteConfiguration) {
             return null
@@ -35,7 +34,7 @@ class NoVerifyRemoteConfigurationProvider : NoVerifyConfigurationProvider() {
 
     override fun createNewInstance(
         project: Project?,
-        existingSettings: List<NoVerifyConfiguration>
+        existingSettings: List<NoVerifyConfiguration>,
     ): NoVerifyConfiguration? {
         return null
     }
@@ -47,6 +46,6 @@ class NoVerifyRemoteConfigurationProvider : NoVerifyConfigurationProvider() {
     }
 
     companion object {
-        private const val NOVERIFY_BY_INTERPRETER: @NonNls String = "noverify_by_interpreter"
+        private const val NOVERIFY_BY_INTERPRETER: String = "noverify_by_interpreter"
     }
 }
