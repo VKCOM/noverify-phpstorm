@@ -7,14 +7,13 @@ import com.intellij.codeHighlighting.HighlightDisplayLevel
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiDocumentManager
 import com.jetbrains.php.tools.quality.*
-import org.jetbrains.annotations.NonNls
 
 class NoVerifyMessageProcessor(private val info: QualityToolAnnotatorInfo<*>) : QualityToolMessageProcessor(info) {
     override fun getQualityToolType(): QualityToolType<NoVerifyConfiguration> {
         return NoVerifyQualityToolType.INSTANCE
     }
 
-    override fun getMessagePrefix(): @NonNls String {
+    override fun getMessagePrefix(): String {
         return "Noverify"
     }
 
@@ -92,7 +91,7 @@ class NoVerifyMessageProcessor(private val info: QualityToolAnnotatorInfo<*>) : 
     }
 
     companion object {
-        private const val MESSAGE_START: @NonNls String = "{"
-        private const val MESSAGE_END: @NonNls String = "}"
+        private const val MESSAGE_START: String = "{"
+        private const val MESSAGE_END: String = "}"
     }
 }
