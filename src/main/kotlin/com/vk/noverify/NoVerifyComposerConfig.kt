@@ -9,10 +9,6 @@ import com.vk.noverify.NoVerifyOpenSettingsProvider.Companion.NOVERIFY_OPEN_SETT
 
 class NoVerifyComposerConfig :
     QualityToolsComposerConfig<NoVerifyConfiguration, NoVerifyValidationInspection>(PACKAGE, RELATIVE_PATH) {
-    override fun getQualityToolsInspectionSettings(): ComposerLogMessageBuilder.Settings? {
-        return null
-    }
-
     override fun getQualityInspectionShortName(): String {
         return NoVerifyQualityToolType.INSTANCE.inspectionId
     }
