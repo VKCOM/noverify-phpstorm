@@ -3,7 +3,6 @@ package com.vk.noverify
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.DialogPanel
-import com.intellij.openapi.util.Disposer
 import com.intellij.openapi.util.Pair
 import com.intellij.ui.LanguageTextField
 import com.intellij.ui.RelativeFont
@@ -19,6 +18,7 @@ class NoVerifyCustomOptionsForm(
     private val configuration: NoVerifyConfiguration,
 ) : QualityToolCustomSettings() {
 
+    // TODO: maybe use NoVerifyConfiguration?
     data class Model(
         var asKphp: Boolean = false,
         var coresCount: Int = Runtime.getRuntime().availableProcessors(),
@@ -28,7 +28,7 @@ class NoVerifyCustomOptionsForm(
         var customParameters: String = "",
     )
 
-    private lateinit var centralPanel: DialogPanel
+    private lateinit var panel: DialogPanel
     private val model = Model()
 
     override fun createComponent(): JComponent {
@@ -37,7 +37,7 @@ class NoVerifyCustomOptionsForm(
         val excludeRegexpTextField = LanguageTextField(RegExpLanguage.INSTANCE, project, "", true)
         val unusedVarRegexpTextField = LanguageTextField(RegExpLanguage.INSTANCE, project, "", true)
 
-        centralPanel = panel {
+        panel = panel {
             row {
                 checkBox("Interpret code as KPHP")
                     .align(AlignX.FILL)
@@ -75,15 +75,11 @@ class NoVerifyCustomOptionsForm(
             }
         }
 
-        val disposable = Disposer.newDisposable()
-        centralPanel.registerValidators(disposable)
-        Disposer.register(project, disposable)
-
-        return centralPanel
+        return panel
     }
 
     override fun isModified(): Boolean {
-        centralPanel.reset()
+        panel.reset()
         return model.asKphp != configuration.asKphp ||
                 model.coresCount != configuration.coresCount ||
                 model.excludeRegexp != configuration.excludeRegexp ||
@@ -93,7 +89,7 @@ class NoVerifyCustomOptionsForm(
     }
 
     override fun apply() {
-        centralPanel.apply()
+        panel.apply()
 
         configuration.asKphp = model.asKphp
         configuration.coresCount = model.coresCount
@@ -111,7 +107,7 @@ class NoVerifyCustomOptionsForm(
         model.cachePath = configuration.cachePath
         model.customParameters = configuration.customParameters
 
-        centralPanel.reset()
+        panel.reset()
     }
 
     override fun getDisplayName() = null
