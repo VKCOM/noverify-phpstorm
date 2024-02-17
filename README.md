@@ -1,10 +1,10 @@
+# <img src="src/main/resources/META-INF/pluginIcon.svg"> NoVerify plugin for PhpStorm
+
 [![Build](https://github.com/VKCOM/noverify-phpstorm/workflows/Build/badge.svg)](https://github.com/VKCOM/noverify-phpstorm/workflows/Build/badge.svg)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 [![Total Downloads](https://img.shields.io/jetbrains/plugin/d/19465)](https://plugins.jetbrains.com/plugin/19465-noverify-support)
 [![Latest Version](https://img.shields.io/jetbrains/plugin/v/19465)](https://plugins.jetbrains.com/plugin/19465-noverify-support)
 [![Telegram chat](https://img.shields.io/badge/chat-join-brightgreen?logo=telegram)](https://t.me/noverify_linter)
-
-# <img src="src/main/resources/META-INF/pluginIcon.svg"> NoVerify plugin for PhpStorm
 
 ## About
 
