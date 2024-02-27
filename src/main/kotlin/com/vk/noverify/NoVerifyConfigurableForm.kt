@@ -6,6 +6,7 @@ import com.jetbrains.php.PhpBundle
 import com.jetbrains.php.tools.quality.*
 import com.vk.noverify.NoVerifyConfigurationBaseManager.Companion.NOVERIFY
 
+// TODO: change to PhpStanOptionsPanel
 class NoVerifyConfigurableForm(project: Project, configuration: NoVerifyConfiguration) :
     QualityToolConfigurableForm<NoVerifyConfiguration>(project, configuration, NOVERIFY, "Noverify") {
     override fun getQualityToolType(): QualityToolType<QualityToolConfiguration> {
